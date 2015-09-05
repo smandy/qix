@@ -1,0 +1,29 @@
+{
+	"name": "qix",
+	"description": "A minimal D application.",
+    "copyright": "Copyright © 2015, andy",
+
+    "configurations" : [
+
+        {
+            "name" : "vortex",
+            "mainSourceFile" : "source/vortex.d",
+            "versions" : ["vortex"]
+        },{
+            "name" : "qix",
+            "mainSourceFile" : "source/qix.d",
+            "versions" : ["qix"]
+        },{
+            "name" : "ttf",
+            "mainSourceFile" : "source/ttfD3Experiment.d",
+            "versions" : ["ttf"]
+        }
+    ],  
+    
+    "_buildOptions" : ["verbose"],
+    "authors": ["andy"],
+    "targetType" : "executable",
+    "dependencies": {
+        "derelict-sdl2": "~>1.9.7"
+    }
+}
