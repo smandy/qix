@@ -8,23 +8,23 @@
         {
             "name" : "vortex",
             "mainSourceFile" : "source/vortex.d",
-            "versions" : ["vortex"]
+            "versions" : ["vortex"],
+            "targetName" : "vortex"
         },{
             "name" : "qix",
             "mainSourceFile" : "source/qix.d",
-            "versions" : ["qix"]
+            "versions" : ["qix"],
+            "targetName" : "qix"
         },{
             "name" : "ttf",
             "mainSourceFile" : "source/ttfD3Experiment.d",
-            "versions" : ["ttf"]
+            "versions" : ["ttf"],
+            "targetName" : "ttf"
         },{
             "name" : "numpties",
             "mainSourceFile" : "source/numpties.d",
-            "versions" : ["numpties"]
-        },{
-            "name" : "linkProb",
-            "mainSourceFile" : "source/linkProb.d",
-            "versions" : ["linkProb"]
+            "versions" : ["numpties"],
+            "targetName" : "numpties"
         }
     ],  
     
