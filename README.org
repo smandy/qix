@@ -1,0 +1,15 @@
+
+* QIX
+
+** Old screensaver type things
+
+   Proof of principle for D / DUB / SDL based projects
+
+   Different configs enabled using the dub 'config' argument will
+   cause different mains to be compiled.
+
+* Emacs build commands
+
+  (compile "cd ~/repos/qix && dub --config=qix")
+  (compile "cd ~/repos/qix && dub --config=vortex")
+  (compile "cd ~/repos/qix && dub --config=ttf")
