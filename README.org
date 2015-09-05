@@ -16,12 +16,7 @@
   (let* (
          (kill-buffer-query-functions '())
          (compilation-buffer-name (format "*compilation* %s" mnemonic) )
-         (compilation-buffer-name-function (lambda (x)
-                                             (progn
-                                               ( message x)
-                                               compilation-buffer-name) )
-                                           )
-         )
+         (compilation-buffer-name-function (lambda (x) compilation-buffer-name) ))
     (if (get-buffer compilation-buffer-name)
         (kill-buffer compilation-buffer-name))
     (compile compileCommand)))
@@ -36,7 +31,7 @@
    (compile-in-own-buffer "vortex"   "cd ~/repos/qix && dub --force --config=vortex"))
 
 (build-numpties)
-(build-qix)
+(build-qix)bx
 (build-ttf)
 (build-vortex)
 
