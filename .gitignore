@@ -11,3 +11,5 @@ __dummy.html
 /Makefile~
 /dub.selections.json~
 /source/linkProb.d~
+/#README.org#
+/source/numpties.d~

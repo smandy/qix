@@ -53,9 +53,16 @@ void drawLine(T)( ref T p) {
   SDL_RenderDrawLines(renderer, points2.ptr, 2);
 };
 
-void main() {
+
+version(numpties) {
+  void main() {
+    numptyMain();
+  }
+}
+
+void numptyMain() {
   writefln("Loading SDL");
- DerelictSDL2.load();
+  DerelictSDL2.load();
   writefln("Loading GL");
   DerelictGL.load();
   //writefln("Loading GLU");
@@ -63,7 +70,9 @@ void main() {
   //cpSpace *space = cpSpaceNew();
   if ( SDL_Init( SDL_INIT_VIDEO ) < 0 ) {
     writefln("It didn't work");
-  };
+  }
+
+  string compiler_workaround = typeid(cpBody).toString();
 
   writefln("It worked");
   auto NULL = cast(void*)0;
@@ -104,7 +113,7 @@ void main() {
   struct Pair(T) {
 	 T lhs;
 	 T rhs;
-  };
+  }
   
   Pair!cpv[] pairs;
   void addPair( cpv x, cpv y) {
@@ -113,12 +122,12 @@ void main() {
 	 ground.u = 1.0f;
 	 cpSpaceAddShape(space, ground);
 	 pairs ~= Pair!cpv( x, y);
-  };
+  }
 
   void doPair( double dy ) {
 	 addPair( cpv(0   , 300 + dy)   , cpv( 500  , dy + 190));
 	 addPair( cpv(800 , dy + 200)    , cpv(300  , dy + 80 ));
-  };
+  }
 
   doPair(800);
   doPair(600);
@@ -157,7 +166,7 @@ void main() {
 	 shape.e = 0.0f;
 	 shape.u = 0.9f;
 	 //return bod;
-  };
+  }
 
   auto y = Height - 50;
   for( auto x = 50.0; x< 350; x += 1) {
@@ -166,7 +175,7 @@ void main() {
 	 addBall( x, y+6);
 
 	 //y -= 1;
-  };
+  }
 
   bool finished = false;
   auto cidx = 0L;
@@ -203,22 +212,22 @@ void main() {
 		}
 		if ( event.key.keysym.sym == SDLK_RIGHT) {
 		  numptyx += numptyDelta;
-		};
+		}
 		if ( event.key.keysym.sym == SDLK_UP ) {
 		  numptyy += numptyDelta;
 		} else if ( event.key.keysym.sym == SDLK_DOWN) {
 		  numptyy -= numptyDelta;
-		};
+		}
 	 }
 
 	 SDL_RenderClear(renderer);
 	 foreach( ref Pair!cpv p ; pairs) {
 		drawLine( p );
-	 };
+	 }
     //SDL_RenderPresent(renderer);
 	 foreach( ref ball; balls ) {
 	  	drawSquare( ball.p, radius);
-	 };
+	 }
     SDL_RenderPresent(renderer);
   }
 

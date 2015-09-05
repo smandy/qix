@@ -16,5 +16,6 @@
 
   (compile "cd ~/repos/qix && dub --force --config=ttf")
 
+  (progn
   (compile "cd ~/repos/qix && dub --force --config=numpties")
 
