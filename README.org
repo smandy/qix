@@ -14,4 +14,7 @@
 
   (compile "cd ~/repos/qix && dub --config=vortex")
 
-  (compile "cd ~/repos/qix && dub --config=ttf")
+  (compile "cd ~/repos/qix && dub --force --config=ttf")
+
+  (compile "cd ~/repos/qix && dub --force --config=numpties")
+

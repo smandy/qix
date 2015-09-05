@@ -17,13 +17,24 @@
             "name" : "ttf",
             "mainSourceFile" : "source/ttfD3Experiment.d",
             "versions" : ["ttf"]
+        },{
+            "name" : "numpties",
+            "mainSourceFile" : "source/numpties.d",
+            "versions" : ["numpties"]
+        },{
+            "name" : "linkProb",
+            "mainSourceFile" : "source/linkProb.d",
+            "versions" : ["linkProb"]
         }
     ],  
     
     "_buildOptions" : ["verbose"],
     "authors": ["andy"],
     "targetType" : "executable",
-    "dependencies": {
-        "derelict-sdl2": "~>1.9.7"
+    "dependencies" : {
+        "derelict-gl3": "~>1.0.15",
+        "derelict-sdl2": "~>1.9.7",
+        "dchip" : "~>0.1.2",
+        
     }
 }
