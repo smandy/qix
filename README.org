@@ -11,5 +11,7 @@
 * Emacs build commands
 
   (compile "cd ~/repos/qix && dub --config=qix")
+
   (compile "cd ~/repos/qix && dub --config=vortex")
-  (compile "cd ~/repos/qix && dub --config=ttf")
+
+  (compile "cd ~/repos/qix && dub --config=ttf")r
