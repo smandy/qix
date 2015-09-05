@@ -26,10 +26,14 @@
         (kill-buffer compilation-buffer-name))
     (compile compileCommand)))
 
-(defun build-numpties () (compile-in-own-buffer "numpties" "cd ~/repos/qix && dub --force --config=numpties"))
-(defun build-qix      () (compile-in-own-buffer "qix"      "cd ~/repos/qix && dub --force --config=qix"))
-(defun build-ttf      () (compile-in-own-buffer "ttf"      "cd ~/repos/qix && dub --force --config=ttf"))
-(defun build-vortex   () (compile-in-own-buffer "vortex"   "cd ~/repos/qix && dub --force --config=vortex"))
+(defun build-numpties () 
+   (compile-in-own-buffer "numpties" "cd ~/repos/qix && dub --force --config=numpties"))
+(defun build-qix      () 
+   (compile-in-own-buffer "qix"      "cd ~/repos/qix && dub --force --config=qix"))
+(defun build-ttf      () 
+   (compile-in-own-buffer "ttf"      "cd ~/repos/qix && dub --force --config=ttf"))
+(defun build-vortex   () 
+   (compile-in-own-buffer "vortex"   "cd ~/repos/qix && dub --force --config=vortex"))
 
 (build-numpties)
 (build-qix)
