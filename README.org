@@ -53,10 +53,15 @@
  (defun build-vortex   () 
     (compile-in-own-buffer "vortex"   "cd ~/repos/qix && dub --force --config=vortex"))
 
+ (defun build-platform   () 
+    (compile-in-own-buffer "platform"   "cd ~/repos/qix && dub --force --config=platform"))
+
  (build-numpties)
  (build-qix)
  (build-ttf)
  (build-vortex)
+ (build-platform)
+
 
 
 

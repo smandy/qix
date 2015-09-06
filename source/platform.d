@@ -38,7 +38,7 @@ struct Vortex(int N) {
   Mousey m;
   float degreeOffset;
   const float degreeDelta;
-  const float lengthFraction = 0.98;
+  const float lengthFraction = 0.99;
     
   this(int x_, int y_,
        int dx,
@@ -83,13 +83,13 @@ SDL_Point[5] points;
 
 Player player;
 
-alias Vortex!200 VortexType;
+alias Vortex!300 VortexType;
 
-VortexType[5] vortices = [ VortexType(100,100, 3,4, 2.0, 1.0),
-                           VortexType(150,100, 2,-3, 2.0, 3.0),
-                           VortexType(200,50, 1,1, 2.0, 0.5),
-                           VortexType(200,50, 3,-1, 2.0, 0.5),
-                           VortexType(200,50, 2,5, 10.0, 4.0)
+VortexType[5] vortices = [ VortexType(100,100, 3,4, 2.0, 0.2),
+                           VortexType(150,100, 2,-3, 2.0, 0.3),
+                           VortexType(200,50, 1,1, 2.0, 0.25),
+                           VortexType(200,50, 3,-1, 2.0, 0.1),
+                           VortexType(200,50, 2,5, 10.0, 0.15)
 
                            ];
 
