@@ -1,4 +1,3 @@
-
 * QIX
 
 ** Old screensaver type things
@@ -8,33 +7,60 @@
    Different configs enabled using the dub 'config' argument will
    cause different mains to be compiled.
 
-* Emacs build commands
+** Executables
 
-#+BEGIN_EXAMPLE
+*** QIX
+    
+    First one in the repo - got the name. Cheezy moving polygons
+    leaving trails behind them. Reminiscent of early windows / BT Mac
+    screensavers.
 
-(defun compile-in-own-buffer (mnemonic compileCommand)
-  (let* (
-         (kill-buffer-query-functions '())
-         (compilation-buffer-name (format "*compilation* %s" mnemonic) )
-         (compilation-buffer-name-function (lambda (x) compilation-buffer-name) ))
-    (if (get-buffer compilation-buffer-name)
-        (kill-buffer compilation-buffer-name))
-    (compile compileCommand)))
+*** Vortex
 
-(defun build-numpties () 
-   (compile-in-own-buffer "numpties" "cd ~/repos/qix && dub --force --config=numpties"))
-(defun build-qix      () 
-   (compile-in-own-buffer "qix"      "cd ~/repos/qix && dub --force --config=qix"))
-(defun build-ttf      () 
-   (compile-in-own-buffer "ttf"      "cd ~/repos/qix && dub --force --config=ttf"))
-(defun build-vortex   () 
-   (compile-in-own-buffer "vortex"   "cd ~/repos/qix && dub --force --config=vortex"))
+    A little 'spiral' program I wrote reminiscent of a program I wrote
+    30 odd years ago on my microbee sizteen. Each frame renders faster
+    than the microbee used to take ~20 mins to render.
 
-(build-numpties)
-(build-qix)bx
-(build-ttf)
-(build-vortex)
+*** TTF
+    
+    Experiments with truetype to see if an orderbook viewer could
+    realistically be rendered.
 
-#+END_EXAMPLE
+*** Numpties
+
+    A simple dchip physics sample. Threw up some interesting linking
+    errors that I needed to ask Adam Ruppe for help with.
+
+** Emacs build commands
+
+ #+BEGIN_EXAMPLE
+
+ (defun compile-in-own-buffer (mnemonic compileCommand)
+   (let* (
+          (kill-buffer-query-functions '())
+          (compilation-buffer-name (format "*compilation* %s" mnemonic) )
+          (compilation-buffer-name-function (lambda (x) compilation-buffer-name) ))
+     (if (get-buffer compilation-buffer-name)
+         (kill-buffer compilation-buffer-name))
+     (compile compileCommand)))
+
+ (defun build-numpties () 
+    (compile-in-own-buffer "numpties" "cd ~/repos/qix && dub --force --config=numpties"))
+ (defun build-qix      () 
+    (compile-in-own-buffer "qix"      "cd ~/repos/qix && dub --force --config=qix"))
+ (defun build-ttf      () 
+    (compile-in-own-buffer "ttf"      "cd ~/repos/qix && dub --force --config=ttf"))
+ (defun build-vortex   () 
+    (compile-in-own-buffer "vortex"   "cd ~/repos/qix && dub --force --config=vortex"))
+
+ (build-numpties)
+ (build-qix)
+ (build-ttf)
+ (build-vortex)
+
+
+
+
+ #+END_EXAMPLE
 
 
