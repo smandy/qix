@@ -1,5 +1,8 @@
 import std.stdio;
 
+import billiardball;
+import mousey;
+
 private import derelict.sdl2.sdl;
 
 import std.math;
@@ -8,21 +11,87 @@ import std.conv;
 pragma(lib, "DerelictUtil.lib");
 pragma(lib, "DerelictSDL2.lib");
 
-const int Width=800, Height=600;
+enum int WIDTH=800, HEIGHT=600;
 
 SDL_Window   *window;
 SDL_Renderer *renderer;
+
+
+mixin template coords() {
+  int x;
+  int y;
+};
+
+
+alias BilliardBall!(WIDTH,HEIGHT,3) BBType;
+
+struct Vortex(int N) {
+  BBType bb;
+  
+  void tick() {
+    degreeOffset += degreeDelta;
+    bb.tick();
+  };
+  
+  mixin coords;
+  SDL_Point[N] points;
+  Mousey m;
+  float degreeOffset;
+  const float degreeDelta;
+  const float lengthFraction = 0.98;
+    
+  this(int x_, int y_,
+       int dx,
+       int dy,
+       float degreeOffset_,
+       float degreeDelta_) {
+    x = x_;
+    y = y_;
+    degreeOffset = degreeOffset_;
+    degreeDelta = degreeDelta_;
+    bb = BBType(100,100, dx, dy);
+  };
+  
+  void draw() {
+    m.reset(bb.x.d,bb.y.d, 0.0);
+    float l = 100;
+    int idx = 0;
+    while( l > 0.05 && idx<points.length) {
+      points[idx] = SDL_Point(to!int(m.getX()), to!int(m.getY()));
+      m.move( l );
+      m.turn( Mousey.HALF_PI + degreeOffset * Mousey.DEGREE);
+      l *= lengthFraction;
+      ++ idx;
+    }
+    SDL_RenderDrawLines( renderer, points.ptr, to!int(points.length));
+  }
+}
+
 
 void drawScene() {
   SDL_SetRenderDrawColor( renderer, 0, 0, 0, 0);
   SDL_RenderClear(renderer);
   SDL_SetRenderDrawColor( renderer, 0, 255, 255, 255);
   drawPlayer();
+  foreach(ref v ; vortices) {
+    v.draw();
+  }
+  SDL_RenderPresent(renderer);
 }
 
 SDL_Point[5] points;
 
 Player player;
+
+alias Vortex!200 VortexType;
+
+VortexType[5] vortices = [ VortexType(100,100, 3,4, 2.0, 1.0),
+                           VortexType(150,100, 2,-3, 2.0, 3.0),
+                           VortexType(200,50, 1,1, 2.0, 0.5),
+                           VortexType(200,50, 3,-1, 2.0, 0.5),
+                           VortexType(200,50, 2,5, 10.0, 4.0)
+
+                           ];
 
 void drawPlayer() {
   points[0].x = player.x;
@@ -40,12 +109,11 @@ void drawPlayer() {
   points[4] = points[0];
   
   SDL_RenderDrawLines( renderer, points.ptr, to!int(points.length));
-  SDL_RenderPresent(renderer);
 };
 
 void InitGL(int Width, int Height)
 {
-  window = SDL_CreateWindow("Vortex", SDL_WINDOWPOS_CENTERED,
+  window = SDL_CreateWindow("Whirligig", SDL_WINDOWPOS_CENTERED,
 			    SDL_WINDOWPOS_CENTERED, Width, Height, SDL_WINDOW_SHOWN);
   if (window == null){
     writeln( "CreateWindow");
@@ -79,10 +147,11 @@ void platformMain() {
   auto NULL = cast(void*)0;
 
   writefln("Calling initgl\n");
-  InitGL(Width, Height);
+  InitGL(WIDTH, HEIGHT);
   
   SDL_Event event;
   auto done = false;
+
   while ( !done ) {
     drawScene();
 
@@ -100,6 +169,10 @@ void platformMain() {
       if ( event.key.keysym.sym == SDLK_RIGHT) {
         player.x += 5;
       }
+    }
+
+    foreach(ref v ; vortices) {
+      v.tick();
     }
     
     drawScene();

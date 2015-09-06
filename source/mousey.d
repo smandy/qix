@@ -6,14 +6,17 @@ struct Mousey {
   static immutable float DEGREE  = PI / 180.0;
 
   float direction;
-
   float x;
   float y;
 
-  this(float x_, float y_, float direction_ = 0.0f ) {
+  void reset(int x_, int y_, float direction_) {
     x = x_;
     y = y_;
     direction = direction_;
+  };
+  
+  this(int x_, int y_, float direction_ = 0.0f ) {
+    reset(x_, y_, direction_);
   }
 
   void move( float l ) {
