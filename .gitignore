@@ -16,3 +16,6 @@ __dummy.html
 /ttf
 /vortex
 /numpties
+/source/platform.d~
+*~
+/platform

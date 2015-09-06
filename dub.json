@@ -25,6 +25,11 @@
             "mainSourceFile" : "source/numpties.d",
             "versions" : ["numpties"],
             "targetName" : "numpties"
+        },{
+            "name" : "platform",
+            "mainSourceFile" : "source/platform.d",
+            "versions" : ["platform"],
+            "targetName" : "platform"
         }
     ],  
     
