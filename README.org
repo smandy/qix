@@ -21,6 +21,16 @@
     30 odd years ago on my microbee sizteen. Each frame renders faster
     than the microbee used to take ~20 mins to render.
 
+**** Controls
+
+     Descriptions don't make much sense. Have a play. It'll become
+     clear :-) At some parameter 'sweet spots' you can see fibonacci
+     sunflower patterns emerging out of nothing but simple iterative
+     maths. Cool!
+     
+***** LEFT/RIGHT arrow keys - change 'theta' for the vortex.
+***** UP/DOWN arrow keys - increase/decreate the 'decay' of the vortex
+
 *** TTF
     
     Experiments with truetype to see if an orderbook viewer could
@@ -52,7 +62,6 @@
     (compile-in-own-buffer "ttf"      "cd ~/repos/qix && dub --force --config=ttf"))
  (defun build-vortex   () 
     (compile-in-own-buffer "vortex"   "cd ~/repos/qix && dub --force --config=vortex"))
-
  (defun build-platform   () 
     (compile-in-own-buffer "platform"   "cd ~/repos/qix && dub --force --config=platform"))
 
@@ -61,10 +70,6 @@
  (build-ttf)
  (build-vortex)
  (build-platform)
-
-
-
-
 
  #+END_EXAMPLE
 

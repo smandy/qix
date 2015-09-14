@@ -16,12 +16,10 @@ enum int WIDTH=800, HEIGHT=600;
 SDL_Window   *window;
 SDL_Renderer *renderer;
 
-
 mixin template coords() {
   int x;
   int y;
 };
-
 
 alias BilliardBall!(WIDTH,HEIGHT,3) BBType;
 
@@ -38,7 +36,7 @@ struct Vortex(int N) {
   Mousey m;
   float degreeOffset;
   const float degreeDelta;
-  const float lengthFraction = 0.99;
+  const float lengthFraction = 0.95;
     
   this(int x_, int y_,
        int dx,
@@ -63,7 +61,7 @@ struct Vortex(int N) {
       l *= lengthFraction;
       ++ idx;
     }
-    SDL_RenderDrawLines( renderer, points.ptr, to!int(points.length));
+    SDL_RenderDrawLines( renderer, points.ptr, idx);
   }
 }
 
