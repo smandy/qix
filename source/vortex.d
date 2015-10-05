@@ -39,7 +39,7 @@ void drawVortex(float degreeOffset, float lengthFraction) {
     m.turn( Mousey.HALF_PI + degreeOffset * Mousey.DEGREE);
     l *= lengthFraction;
   }
-  writefln("Points are %s", &points);
+  //writefln("Points are %s", &points);
   SDL_RenderDrawLines( renderer, points.ptr, to!int(points.length));
   SDL_RenderPresent(renderer);
 };

@@ -18,7 +18,7 @@
 *** Vortex
 
     A little 'spiral' program I wrote reminiscent of a program I wrote
-    30 odd years ago on my microbee sizteen. Each frame renders faster
+    30 odd years ago on my microbee sixteen. Each frame renders faster
     than the microbee used to take ~20 mins to render.
 
 **** Controls
@@ -45,7 +45,7 @@
 
  #+BEGIN_EXAMPLE
 
- (defun compile-in-own-buffer (mnemonic compileCommand)
+ (defun ciob (mnemonic compileCommand)
    (let* (
           (kill-buffer-query-functions '())
           (compilation-buffer-name (format "*compilation* %s" mnemonic) )
@@ -54,22 +54,21 @@
          (kill-buffer compilation-buffer-name))
      (compile compileCommand)))
 
- (defun build-numpties () 
-    (compile-in-own-buffer "numpties" "cd ~/repos/qix && dub --force --config=numpties"))
- (defun build-qix      () 
-    (compile-in-own-buffer "qix"      "cd ~/repos/qix && dub --force --config=qix"))
- (defun build-ttf      () 
-    (compile-in-own-buffer "ttf"      "cd ~/repos/qix && dub --force --config=ttf"))
- (defun build-vortex   () 
-    (compile-in-own-buffer "vortex"   "cd ~/repos/qix && dub --force --config=vortex"))
- (defun build-platform   () 
-    (compile-in-own-buffer "platform"   "cd ~/repos/qix && dub --force --config=platform"))
+ (defun numpties () (ciob "numpties" "cd ~/repos/qix && dub --force --config=numpties"))
+ (defun numpties2 () (ciob "numpties2" "cd ~/repos/qix && dub --force --config=numpties"))
 
- (build-numpties)
- (build-qix)
- (build-ttf)
- (build-vortex)
- (build-platform)
+ (defun qix      () (ciob "qix"      "cd ~/repos/qix && dub --force --config=qix"))
+ (defun ttf      () (ciob "ttf"      "cd ~/repos/qix && dub --force --config=ttf"))
+ (defun vortex   () (ciob "vortex"   "cd ~/repos/qix && dub --force --config=vortex"))
+ (defun platform () (ciob "platform" "cd ~/repos/qix && dub --force --config=platform"))
+
+ (numpties)
+ (numpties2)
+
+ (qix)
+ (ttf)
+ (vortex)
+ (platform)
 
  #+END_EXAMPLE
 
