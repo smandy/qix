@@ -125,7 +125,7 @@ void vortexMain() {
 
     auto haveEvent = SDL_PollEvent(&event);
     immutable lfBump    = 0.001;
-    immutable degBump   = 0.03;
+    immutable degBump   = 0.01;
 
     if ( event.type == SDL_QUIT ) {
       done = 1;

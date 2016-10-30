@@ -25,7 +25,8 @@ struct PointBox {
   SDL_Point b;
   SDL_Point c;
   SDL_Point d;
-  SDL_Point e; // Copy of a - simpler than calling SDL twice!
+  SDL_Point e;
+  SDL_Point f; // Copy of a - simpler than calling SDL twice!
 };
 
 CircularBuffer!(NUM_LINES,PointBox) linebuf;
@@ -36,9 +37,11 @@ BB az = BB(10 , 10 ,  3 , -2 );
 BB bz = BB(10 , 10 , -7 , 1  );
 BB cz = BB(200, 5  ,  3 , 6  );
 BB dz = BB(2  , 8  ,  2 , 7  );
+BB ez = BB(3  , 9  ,  3 , -5  );
+
 
 enum startColor = SDL_Color(0 , 255 , 255 );
-enum endColor   = SDL_Color(0, 0 ,   0 );
+enum endColor   = SDL_Color(255, 0 ,   0 );
 
 SDL_Color[] morphColors(int N, 
 								const SDL_Color startColor, 
@@ -79,13 +82,15 @@ void drawScene(float degreeOffset,float lengthFraction) {
   pp.b = bz.point;
   pp.c = cz.point;
   pp.d = dz.point;
-  pp.e = az.point; // Close the triangle!
+  pp.e = ez.point;
+  pp.f = az.point; // Close the triangle!
 
   //writefln("adding %s %s", az.point, bz.point);
   az.tick();
   bz.tick();
   cz.tick();
   dz.tick();
+  ez.tick();
   linebuf.enqueue( pp );
 
   SDL_SetRenderDrawColor( renderer, 0, 0, 0, 0);

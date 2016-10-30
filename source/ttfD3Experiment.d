@@ -150,7 +150,7 @@ void ttfMain() {
 
   writefln("It worked");
   auto NULL = cast(void*)0;
-
+  
   window = SDL_CreateWindow("Lesson 6", SDL_WINDOWPOS_CENTERED,
 			    SDL_WINDOWPOS_CENTERED, Width, Height, SDL_WINDOW_SHOWN);
   if (window == null){

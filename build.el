@@ -1,4 +1,4 @@
- (defun ciob (mnemonic compileCommand)
+(defun ciob (mnemonic compileCommand)
    (let* (
           (kill-buffer-query-functions '())
           (compilation-buffer-name (format "*compilation* %s" mnemonic) )
@@ -7,7 +7,7 @@
          (kill-buffer compilation-buffer-name))
      (compile compileCommand)))
 
-(defun numpties () (ciob "numpties" "cd ~/repos/qix && dub --force --config=numpties"))
+(defun numpties  () (ciob "numpties" "cd ~/repos/qix && dub --force --config=numpties"))
 (defun numpties2 () (ciob "numpties2" "cd ~/repos/qix && dub --force --config=numpties"))
 
 (defun qix      () (ciob "qix"      "cd ~/repos/qix && dub --force --config=qix"))
@@ -16,7 +16,6 @@
 (defun platform () (ciob "platform" "cd ~/repos/qix && dub --force --config=platform"))
 
 (numpties)
-
 (numpties2)
 
 (qix)
